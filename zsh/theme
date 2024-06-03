@@ -1,0 +1,35 @@
+# vim: set ft=zsh:
+
+# PURE_PATH="$HOME/pure"
+#
+# fpath+=($PURE_PATH)
+#
+# # makes color constants available
+# autoload -U colors
+# colors
+#
+# autoload -U promptinit;promptinit
+#
+# # optionally define some options
+# PURE_CMD_MAX_EXEC_TIME=10   # The max execution time of a process before its run time is shown when it exits.
+# PURE_GIT_PULL=1             # Prevents Pure from checking whether the current Git remote has been updated.
+#
+#
+# PURE_PROMPT_SYMBOL='🏠 home'
+# if [[ "$OSTYPE" =~ "darwin" ]]; then
+#   PURE_PROMPT_SYMBOL='💼'
+# fi
+#
+#
+# zstyle :prompt:pure:git:action show yes
+#
+# # change the color for both `prompt:success` and `prompt:error`
+# zstyle ':prompt:pure:prompt:*' color cyan
+#
+# # turn on git stash status
+# zstyle :prompt:pure:git:stash show yes
+#
+# # turn on virtualenv
+# prompt pure
+
+eval "$(starship init zsh)"

@@ -1,0 +1,10 @@
+# vim: set ft=zsh:
+
+HISTFILE=~/.zhistory
+HISTSIZE=1000
+SAVEHIST=1000
+
+setopt histignorealldups                                        # If a new command is a duplicate, remove the older one
+setopt histappend                                               # Don't erase history
+setopt inc_append_history                                       # Add immediately
+setopt share_history                                            # Share history between session/terminals

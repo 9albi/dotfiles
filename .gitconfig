@@ -1,7 +1,7 @@
 [user]
 
 	name = Nassim Guelbi
-	email = nasso48@gmail.com
+	email = 127761370+9albi@users.noreply.github.com
 	signingkey = 2D0C0D4DA730B493C3D9648C0419EF5B5EBFC9D9
 
 [includeIf "gitdir:~/work/"]

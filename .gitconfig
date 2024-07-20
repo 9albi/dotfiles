@@ -46,7 +46,7 @@
 	remotes = remote --verbose
 
 	# List aliases.
-	aliases = config --get-regexp alias
+  aliases = ! git config --get-regexp ^alias\\. | sed -e 's/^alias\\.\\([^ ]*\\)/\\x1B[33m\\1\\x1B[0m =/'
 
 	# Amend the currently staged files to the latest commit.
 	amend = commit --amend --reuse-message=HEAD

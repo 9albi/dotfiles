@@ -12,9 +12,12 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# Go
+if [ -d "$HOME/go" ]; then
+  export GOPATH="$HOME/go"
+  # export GOBIN="$GOPATH/bin"
+  PATH="$PATH:/usr/local/go/bin"
+fi
 
-PATH="$PATH:/opt/nvim-linux64/bin"
-PATH="$PATH:$HOME/go/bin"
-PATH="$PATH:/usr/local/go/bin"
 
 export PATH=$PATH

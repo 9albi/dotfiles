@@ -9,15 +9,40 @@ local keyset = vim.keymap.set
 keyset("i", "jk", "<ESC>", { noremap = true, silent = true, desc = "<ESC>" })
 keyset("t", "jk", "<cmd>close<cr>", { noremap = true, silent = true, desc = "<ESC>" })
 
-keyset("v", "J", ":m '>+1<cr>gv=gv")
-keyset("v", "K", ":m '<-2<cr>gv=gv")
--- keyset("n", "<space>h", "<c-w>h", { desc = "jump left window" }) -- Move cursor to Nth window left of current one.
--- keyset("n", "<space>j", "<c-w>j")
--- keyset("n", "<space>k", "<c-w>k")
--- keyset("n", "<space>l", "<c-w>l")
-keyset("n", "<up>", "<cmd>resize +2<cr>")             -- increase current window's height
-keyset("n", "<down>", "<cmd>resize -2<cr>")           -- decrease current window's height
-keyset("n", "<right>", "<cmd>vertical resize +2<cr>") -- increase current window's width
-keyset("n", "<left>", "<cmd>vertical resize -2<cr>")  -- decrease current window's width
-keyset("n", "j", "(v:count ? 'j' : 'gj')", { expr = true })
-keyset("n", "k", "(v:count ? 'k' : 'gk')", { expr = true })
+
+-- paste over currently selected text without yanking it
+keyset("v", "p", '"_dp')
+keyset("v", "P", '"_dP')
+
+-- keyset({ 'n', 'x', 'o' }, 'H', '^')
+-- keyset({ 'n', 'x', 'o' }, 'L', '$')
+
+keyset({ "v", "n" }, "d", '"_d')
+keyset({ "v", "n" }, "D", '"_D')
+
+
+keyset({ "n", "v", "x", "i" }, "<Caps>", "<ESC>")
+
+-- https://www.reddit.com/r/neovim/comments/rztkaq/how_do_you_jump_out_pairs_or_quotes_in_insert/
+function EscapePair()
+  local closers = { ")", "]", "}", ">", "'", '"', "`", "," }
+  local line = vim.api.nvim_get_current_line()
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local after = line:sub(col + 1, -1)
+  local closer_col = #after + 1
+  local closer_i = nil
+  for i, closer in ipairs(closers) do
+    local cur_index, _ = after:find(closer)
+    if cur_index and (cur_index < closer_col) then
+      closer_col = cur_index
+      closer_i = i
+    end
+  end
+  if closer_i then
+    vim.api.nvim_win_set_cursor(0, { row, col + closer_col })
+  else
+    vim.api.nvim_win_set_cursor(0, { row, col + 1 })
+  end
+end
+
+vim.api.nvim_set_keymap('i', '<C-l>', '<cmd>lua EscapePair()<CR>', { noremap = true, silent = true })

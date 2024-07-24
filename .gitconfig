@@ -3,16 +3,6 @@
 
   helper = cache --timeout=10800
 
-[includeIf "gitdir:~/personal/"]
-
-  path = ~/personal/.gitconfig
-
-[includeIf "gitdir:~/work/"]
-
-  path = ~/work/.gitconfig
-
-; [status]
-;   showUntrackedFiles = no
 
 [alias]
 
@@ -198,3 +188,11 @@
 [init]
 
 	defaultBranch = main
+
+[includeIf "gitdir:~/personal/"]
+
+  path = ~/personal/.gitconfig
+
+[includeIf "gitdir:~/work/"]
+
+  path = ~/work/.gitconfig

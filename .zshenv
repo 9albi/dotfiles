@@ -10,7 +10,7 @@ fi
 # Go
 if [ -d "$HOME/go" ]; then
   export GOPATH="$HOME/go"
-  # export GOBIN="$GOPATH/bin"
+  export GOBIN="$GOPATH/bin"
   PATH="$PATH:/usr/local/go/bin"
 fi
 

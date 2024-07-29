@@ -1,20 +1,82 @@
-# vim: set ft=zsh:
+# vi: filetype=zsh:
+
+## Options
+
+# Extended globbing. Allows using regular expressions with *
+setopt extendedglob
+if [[ "$OSTYPE" =~ "darwin" ]]; then
+  # Case insensitive globbing# Case insensitive globbing
+  setopt nocaseglob
+fi
 
 
-## Options section
-setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
-setopt nocaseglob                                               # Case insensitive globbing
-setopt rcexpandparam                                            # Array expension with parameters
-setopt nocheckjobs                                              # Don't warn about running processes when exiting
-setopt numericglobsort                                          # Sort filenames numerically when it makes sense
-setopt nobeep                                                   # No beep
-setopt autocd                                                   # if only directory path is entered, cd there.
+# Array expension with parameters
+setopt rcexpandparam
+# Don't warn about running processes when exiting
+setopt nocheckjobs
+# Sort filenames numerically when it makes sense
+setopt numericglobsort
+# No beep# No beep
+setopt nobeep
+# if only directory path is entered, cd there.
+setopt autocd
+
+## Completions
+
+# case insensitive autocompletion
+zstyle ":completion:*" matcher-list "" "m:{a-z}={A-Z}" "m:{a-zA-Z}={A-Za-z}" "r:|[._-]=* r:|=* l:|=*"
+# ignore hosts file for ssh/scp autocompletion
+zstyle ':completion:*' hosts off
+## Speed up completions
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
 
 
+## History
 
-WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
+# Ensure that commands are added to the history immediately
+setopt inc_append_history
+# Record the timestamp of each command in HISTFILE
+setopt extended_history
+# Skip duplicates while searching
+setopt hist_find_no_dups
+# If a new command is a duplicate, remove the older one
+setopt histignorealldups
+# Don't erase history
+setopt histappend
+# Share history between session/terminals
+setopt share_history
+# Add immediately
+setopt inc_append_history
+
+# Tell it where to save the history
+HISTFILE=~/.zhistory
+# The number of lines from $HISTFILE to read at the start of an interactive session
+HISTSIZE=50000
+# The number of lines of your history you want saved
+SAVEHIST=50000
+# Don't consider certain characters part of the word
+WORDCHARS=${WORDCHARS//\/[&.;]}
 
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 # https://github.com/zsh-users/zsh-autosuggestions/issues/619
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-beginning-search-backward-end history-beginning-search-forward-end)
+
+
+# Theming section
+autoload -U compinit colors zcalc
+zmodload zsh/complist
+# to activate the menu, press tab twice# to activate the menu, press tab twice
+zstyle ':completion:*' menu select
+# do not autoselect the first completion entry# do not autoselect the first completion entry
+unsetopt menu_complete
+# allow gloobing, e.g apt update kernel*# allow gloobing, e.g apt update kernel*
+unsetopt nomatch
+# autocompletion CLI switches for aliases# autocompletion CLI switches for aliases
+setopt complete_aliases
+# show colors on menu completion# show colors on menu completion
+zstyle ':completion:*' list-colors ''
+
+colors
 

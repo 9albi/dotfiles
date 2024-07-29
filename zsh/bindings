@@ -1,16 +1,18 @@
-# vim: set ft=zsh:
+# vim: filetype=zsh
 
-bindkey -e        # Emacs keybinding
+bindkey -e        # Emacs keybindings
+# bindkey -v        # Vim Keybindings
 ## Keybindings section
-bindkey "^[[3~" delete-char                                  # Delete key
-bindkey '^[[2~' overwrite-mode                               # Insert key
-bindkey "^[[H"  beginning-of-line                            # Home
-bindkey "^[[F"  end-of-line                                  # End
-bindkey '^[[Z' reverse-menu-complete                         # Shift-Tab
 
-bindkey '^[[1;5C' forward-word                    # ctrl + ->
-bindkey '^[[1;5D' backward-word                   # ctrl + <-
-bindkey ' ' magic-space                                      # History expansion on space
+bindkey "^[[3~" delete-char              # Delete key
+bindkey '^[[2~' overwrite-mode           # Insert key
+bindkey "^[[H"  beginning-of-line        # Home
+bindkey "^[[F"  end-of-line              # End
+bindkey '^[[Z' reverse-menu-complete     # Shift-Tab
+
+bindkey '^[[1;5C' forward-word           # ctrl + ->
+bindkey '^[[1;5D' backward-wor           # ctrl + <-
+bindkey ' ' magic-space                  # History expansion on space
 
 # https://unix.stackexchange.com/a/97844
 autoload -U history-search-end
@@ -31,7 +33,7 @@ bindkey -M menuselect '^l' vi-forward-char
 bindkey -M menuselect '^j' vi-down-line-or-history
 
 
-# bindkey '^ ' autosuggest-accept                               # zsh autosuggestions completion
+bindkey '^ ' autosuggest-accept                               # zsh autosuggestions completion
 
 # edit command in editor
 autoload -z edit-command-line

@@ -1,5 +1,6 @@
-# vim: set ft=zsh:
+# vim: filetype=zsh
 
+alias reload="source ~/.zshrc"
 
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
@@ -17,16 +18,31 @@ alias l='ls -CF'
 alias ln="ln -v"
 alias mkdir="mkdir -p"
 
-# Bundler
-alias b="bundle"
-
-alias reload=". ~/.zshrc"
-# Pretty print the path
-alias path='echo $PATH | tr -s ":" "\n"'
-
 # Easier navigation
 alias ..= "cd .."
 alias -- -="cd -"
+
+
+alias l='eza -lah'
+alias ls=eza
+alias sl=eza
+alias c='clear'
+
+# Pretty print the path
+alias path='echo $PATH | tr -s ":" "\n"'
+
+alias cat="batcat --paging=never"
+alias k="kubectl"
+
+
+note() {
+    if [[ ! -z $@ ]]; then 
+      echo "date: $(date)" >> $HOME/drafts.txt
+      echo "$@" >> $HOME/drafts.txt
+      echo "" >> $HOME/drafts.txt
+    fi
+}
+
 
 # Include custom aliases
 if [[ -f ~/.aliases.local ]]; then

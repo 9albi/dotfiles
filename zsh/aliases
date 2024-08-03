@@ -10,30 +10,30 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 
-# ls aliases
-alias ls='ls -hN --color=auto --group-directories-first'
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias ln="ln -v"
+# eza aliases
+alias ll='eza --all --icons=auto --group --header --group-directories-first --long --git'
+alias lg='ll --git-ignore'
+alias le='eza --group --icons=auto --header --group-directories-first --long --extended'
+alias lc='eza --group --icons=auto --header --group-directories-first --across'
+alias lo='eza --group --icons=auto --header --group-directories-first --oneline'
+
+alias tree='eza -T --git-ignore'
+
 alias mkdir="mkdir -p"
 
 # Easier navigation
+alias cd='z'
 alias ..= "cd .."
 alias -- -="cd -"
 
-
-alias l='eza -lah'
-alias ls=eza
-alias sl=eza
 alias c='clear'
 
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
 alias cat="batcat --paging=never"
-alias k="kubectl"
 
+alias k="kubectl"
 
 note() {
     if [[ ! -z $@ ]]; then 

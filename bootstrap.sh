@@ -1,27 +1,31 @@
 #!/bin/zsh
 
+CURRENT_DIR=`pwd`
+DOTFILES_PATH=`dirname "$0"`
+
 symlink() {
   file=$1
   link=$2
   if [ ! -e "$link" ]; then
     ln -s $file $link
+    echo "linked $file -> $link"
   fi
 }
 
 
-dotfiles=$(ls -A -I .git -I README.md -I bootstrap.sh)
+dotfiles=$(ls -A -I .git -I README.md -I bootstrap.sh $DOTFILES_PATH)
 dotfiles=(${=dotfiles})
+
 # For all files `$name` in the present folder except `*.sh`, `README.md`, `settings.json`, and `config`, backup the target file located at `~/.$name` and symlink `$name` to `~/.$name`
 for name in $dotfiles; do
-  if [ ! -d "$HOME/$name" ] || ; then
-    symlink $PWD/$name $HOME/$name
+  if [ ! -d "$HOME/$name" ]; then
+    symlink $DOTFILES_PATH/$name $HOME/$name
   else
     echo "$HOME/$name already exist!"
   fi
 done
 
 # Install zsh-syntax-highlighting plugin
-# CURRENT_DIR=`pwd`
 # ZSH_PLUGINS_DIR="$HOME/.oh-my-zsh/custom/plugins"
 # mkdir -p "$ZSH_PLUGINS_DIR" && cd "$ZSH_PLUGINS_DIR"
 # if [ ! -d "$ZSH_PLUGINS_DIR/zsh-syntax-highlighting" ]; then
@@ -29,7 +33,6 @@ done
 #   git clone https://github.com/zsh-users/zsh-autosuggestions
 #   git clone https://github.com/zsh-users/zsh-syntax-highlighting
 # fi
-# cd "$CURRENT_DIR"
 
 # Symlink VS Code settings and keybindings to the present `settings.json` and `keybindings.json` files
 # If it's a macOS
@@ -61,4 +64,5 @@ fi
 # Refresh the current terminal with the newly installed configuration
 # exec zsh
 
+cd "$CURRENT_DIR"
 echo "👌 Carry on"

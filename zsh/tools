@@ -1,37 +1,18 @@
 # vim: filetype=zsh
 
-# gpg config
-export GPG_TTY=$(tty)
-
-# Starship
-if which starship > /dev/null; then
-  eval "$(starship init zsh)"
-
-fi
-# Direnv
-which direnv > /dev/null \
-  && eval "$(direnv hook zsh)"
-
-# Go
-if [ -d "$HOME/go" ]; then
-  export GOPATH="$HOME/go"
-  PATH="$GOPATH/bin:/usr/local/go/bin:$PATH"
-fi
-
-# Cargo
-if [ -d "$HOME/.cargo" ]; then
-  PATH="$HOME/.cargo/bin:$PATH"
-fi
-
-# nvim
-if which nvim > /dev/null; then
-  export VISUAL="nvim"
-  export EDITOR=$VISUAL
-  export KUBE_EDITOR="nvim"
-fi
-
-
-export PATH=$PATH
-
-
+# starship
 eval "$(starship init zsh)"
+eval "$(starship completions zsh)"
+
+# zoxide
+eval "$(zoxide init zsh)"
+
+# direnv
+eval "$(direnv hook zsh)"
+
+# kubectl
+eval "$(kubectl completion zsh)"
+
+# atuin
+eval "$(atuin init zsh --disable-up-arrow)"
+eval "$(atuin gen-completions --shell zsh)"

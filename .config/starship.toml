@@ -20,7 +20,7 @@ $python\
 [](fg:color_blue bg:color_bg3)\
 $docker_context\
 $direnv$container\
-[](fg:color_bg3 bg:color_bg1)\
+[](fg:color_bg3)\
 $fill\
 ${custom.live-clock-icon}\
 $time \

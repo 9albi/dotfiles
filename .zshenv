@@ -20,6 +20,7 @@ PATH="$HOME/.cargo/bin:$PATH"
 export VISUAL="nvim"
 export EDITOR=$VISUAL
 export KUBE_EDITOR="nvim"
+export MANPAGER='nvim +Man!'
 
 # atuin
 PATH="$HOME/.atuin/bin:$PATH"

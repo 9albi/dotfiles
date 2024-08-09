@@ -2,6 +2,9 @@
 
 ## Options
 
+# force the path (PATH) array to hold unique values
+typeset -U path path
+
 # Extended globbing. Allows using regular expressions with *
 setopt extendedglob
 if [[ "$OSTYPE" =~ "darwin" ]]; then

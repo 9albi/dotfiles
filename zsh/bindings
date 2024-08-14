@@ -11,7 +11,7 @@ bindkey "^[[F"  end-of-line              # End
 bindkey '^[[Z' reverse-menu-complete     # Shift-Tab
 
 bindkey '^[[1;5C' forward-word           # ctrl + ->
-bindkey '^[[1;5D' backward-wor           # ctrl + <-
+bindkey '^[[1;5D' backward-word           # ctrl + <-
 bindkey ' ' magic-space                  # History expansion on space
 
 # https://unix.stackexchange.com/a/97844

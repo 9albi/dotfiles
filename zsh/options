@@ -19,7 +19,7 @@ setopt rcexpandparam
 setopt nocheckjobs
 # Sort filenames numerically when it makes sense
 setopt numericglobsort
-# No beep# No beep
+# No beep
 setopt nobeep
 # if only directory path is entered, cd there.
 setopt autocd

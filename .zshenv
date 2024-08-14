@@ -28,4 +28,4 @@ PATH="$HOME/.atuin/bin:$PATH"
 # fzf
 PATH="$HOME/.fzf/bin:$PATH"
 
-export PATH="$HOME/.local/bin/:$PATH"
+export PATH="$HOME/.local/bin/:$HOME/scripts/:$PATH"

@@ -1,0 +1,15 @@
+#!/bin/sh
+
+ZOXIDE_QUERY=$(zoxide query $1)
+
+if [ -z "$ZOXIDE_QUERY" ]; then
+  exit 0
+fi
+
+FOLDER=$(basename $ZOXIDE_QUERY)
+
+TMUXSESSION=$(tmux list-sessions | grep $FOLDER | awk -F: '{print $1}')
+
+echo $TMUXSESSION
+
+tmux new -As "$FOLDER"

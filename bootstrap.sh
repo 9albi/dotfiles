@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-CURRENT_DIR=`pwd`
-DOTFILES_PATH=`dirname "$0"`
 
 symlink() {
   file=$1
@@ -19,7 +17,7 @@ dotfiles=(${=dotfiles})
 # For all files `$name` in the present folder except `*.sh`, `README.md`, `settings.json`, and `config`, backup the target file located at `~/.$name` and symlink `$name` to `~/.$name`
 for name in $dotfiles; do
   if [ ! -d "$HOME/$name" ]; then
-    symlink $DOTFILES_PATH/$name $HOME/$name
+    symlink $PWD/$name $HOME/$name
   else
     echo "$HOME/$name already exist!"
   fi

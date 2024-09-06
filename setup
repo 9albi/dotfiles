@@ -1,0 +1,37 @@
+#!/bin/zsh
+
+DOTFILES_DIR="$HOME/Repos/github.com/9albi/dotfiles"
+XDG_CONFIG_HOME="$HOME/.config"
+EXCLUDE_FILES=(.git .gitignore README.md .DS_Store scripts starship.toml)
+
+is_excluded() {
+  local file="$1"
+  for exclude in "${EXCLUDE_FILES[@]}"; do
+    if [[ "$file" == "$exclude" ]]; then
+      return 0
+    fi
+  done
+  return 1
+}
+
+for item in "$DOTFILES_DIR"/*(D); do
+  filename=$(basename "$item")
+
+  # Check if the file should be excluded
+  if is_excluded "$filename"; then
+    echo "Skipping $filename"
+    continue
+  fi
+
+  # Symlink regular files to $HOME
+  if [[ -f "$item" ]]; then
+    ln -sfn "$item" "$HOME/$filename"
+    echo "Symlinked $filename$"
+  elif [[ -d "$item" ]]; then
+    ln -sfn "$item" "$XDG_CONFIG_HOME/$filename"
+    echo "Symlinked $filename to $XDG_CONFIG_HOME/$filename"
+  fi
+done
+
+ln -sfn "$DOTFILES_DIR/starship.toml" "$XDG_CONFIG_HOME/starship.toml"
+ln -sfn "$DOTFILES_DIR/scripts" "$HOME/scripts"

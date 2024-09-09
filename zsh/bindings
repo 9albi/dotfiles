@@ -1,7 +1,7 @@
 # vim: filetype=zsh
 
-# bindkey -e        # Emacs keybindings
-bindkey -v        # Vim Keybindings
+bindkey -e        # Emacs keybindings
+# bindkey -v        # Vim Keybindings
 ## Keybindings section
 
 bindkey "^[[3~" delete-char              # Delete key

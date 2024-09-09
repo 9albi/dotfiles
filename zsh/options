@@ -7,8 +7,8 @@ typeset -U path path
 
 # Extended globbing. Allows using regular expressions with *
 setopt extendedglob
-if [[ "$OSTYPE" =~ "darwin" ]]; then
-  # Case insensitive globbing# Case insensitive globbing
+if [[ "$(uname)" == "Darwin" ]]; then
+  # Case insensitive globbing
   setopt nocaseglob
 fi
 
@@ -72,6 +72,7 @@ ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-beginning-search-backward-end history-be
 
 # Theming section
 autoload -U compinit colors zcalc
+compinit
 zmodload zsh/complist
 # to activate the menu, press tab twice# to activate the menu, press tab twice
 zstyle ':completion:*' menu select

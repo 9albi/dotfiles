@@ -4,8 +4,8 @@
 
 -- Movement
 local keyset = vim.keymap.set
-keyset("i", "jk", "<ESC>", { noremap = true, silent = true, desc = "<ESC>" })
-keyset("t", "jk", "<cmd>close<cr>", { noremap = true, silent = true, desc = "<ESC>" })
+-- keyset("i", "jk", "<ESC>", { noremap = true, silent = true, desc = "<ESC>" })
+-- keyset("t", "jk", "<cmd>close<cr>", { noremap = true, silent = true, desc = "<ESC>" })
 
 -- paste over currently selected text without yanking it
 keyset("v", "p", '"_dp')

@@ -1,6 +1,14 @@
 return {
   -- add gruvbox
-  { "ellisonleao/gruvbox.nvim" },
+  {
+    "ellisonleao/gruvbox.nvim",
+    opts = {
+      italic = {
+        strings = false,
+        comments = false,
+      },
+    },
+  },
 
   -- Configure LazyVim to load gruvbox
   {
@@ -8,5 +16,5 @@ return {
     opts = {
       colorscheme = "gruvbox",
     },
-  }
+  },
 }

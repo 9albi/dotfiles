@@ -5,7 +5,6 @@ format = """
 [](color_orange)\
 $os\
 $username\
-${custom.isWork}\
 [](bg:color_yellow fg:color_orange)\
 $directory\
 [](fg:color_yellow bg:color_aqua)\
@@ -14,6 +13,7 @@ $git_branch\
 $git_status\
 [](fg:color_aqua bg:color_blue)\
 $kubernetes\
+$azure\
 $docker\
 $golang\
 $python\
@@ -42,6 +42,12 @@ palette = 'gruvbox_dark'
 # format = "[$allowed]($style)"
 # allowed_msg = ' 󱥾 '
 # style = "bg:color_bg3"
+
+[azure]
+disabled = false
+format = '[ $symbol($subscription)]($style)'
+symbol = '󰠅 '
+style = 'fg:color_fg0 bg:color_blue'
 
 [singularity]
 format = '[\[$env\]]($style) '

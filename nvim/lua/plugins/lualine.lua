@@ -1,42 +1,42 @@
 return {
-
-  {
-    "folke/noice.nvim",
-    -- 💥 Highly experimental plugin that completely replaces
-    -- the UI for messages, cmdline and the popupmenu.
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-    },
-    event = "VeryLazy",
-    ---@class NoiceConfig
-    opts = {
-      ---@type NoicePresets
-      presets = { inc_rename = true },
-      ---@type NoiceConfigViews
-      views = {
-        cmdline_popup = {
-          position = {
-            row = 7,
-            col = "55%",
-          },
-        },
-        cmdline_popupmenu = {
-          position = {
-            row = 7,
-            col = "55%",
-          },
-        },
+  "nvim-lualine/lualine.nvim",
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+    "meuter/lualine-so-fancy.nvim",
+  },
+  opts = {
+    options = {
+      theme = "seoul256",
+      component_separators = { left = "│", right = "│" },
+      section_separators = { left = "", right = "" },
+      globalstatus = true,
+      refresh = {
+        statusline = 100,
       },
     },
-  },
-
-  {
-    "rcarriga/nvim-notify",
-    opts = {
-      -- background_colour = "#2E3440",
-      stages = "static",
-      -- timeout = 3000,
+    sections = {
+      lualine_a = {
+        { "fancy_mode", width = 10 },
+      },
+      lualine_b = {
+        { "fancy_branch" },
+        { "fancy_diff" },
+      },
+      lualine_c = {
+        { "fancy_cwd", substitute_home = true },
+      },
+      lualine_x = {
+        { "fancy_macro" },
+        { "fancy_diagnostics" },
+        { "fancy_searchcount" },
+        { "fancy_location" },
+      },
+      lualine_y = {
+        { "fancy_filetype", ts_icon = "" },
+      },
+      lualine_z = {
+        { "fancy_lsp_servers" },
+      },
     },
   },
 

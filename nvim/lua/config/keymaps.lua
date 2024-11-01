@@ -21,8 +21,6 @@ keyset("n", "<TAB>", ":bn<CR>")
 keyset("n", "<S-TAB>", ":bp<CR>")
 keyset("n", "<leader>bd", ":bd<CR>") -- from Doom Emacs
 
-keyset({ "n", "v", "x", "i" }, "<Caps>", "<ESC>")
-
 -- https://www.reddit.com/r/neovim/comments/rztkaq/how_do_you_jump_out_pairs_or_quotes_in_insert/
 function EscapePair()
   local closers = { ")", "]", "}", ">", "'", '"', "`", "," }
@@ -49,7 +47,7 @@ vim.api.nvim_set_keymap("i", "<C-l>", "<cmd>lua EscapePair()<CR>", { noremap = t
 
 keyset("n", "<space>xe", "<cmd>lua vim.diagnostic.open_float()<CR>", {})
 
-keyset("n", "J", "mzJ`z")
+-- keyset("n", "J", "mzJ`z")
 keyset("n", "<C-d>", "<C-d>zz")
 keyset("n", "<C-u>", "<C-u>zz")
 keyset("n", "n", "nzzzv")

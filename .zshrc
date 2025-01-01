@@ -172,68 +172,6 @@ fi
 
 
 
-# --- Completions --- #
-
-# Use vim keys to select autocompletion
-_comp_options+=(globdots)		# Include hidden files.
-
-zmodload -i zsh/complist
-autoload -Uz compinit
-if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
-  compinit
-else
-  compinit -C
-fi
-
-bindkey -M menuselect '^h' vi-backward-char
-bindkey -M menuselect '^k' vi-up-line-or-history
-bindkey -M menuselect '^l' vi-forward-char
-bindkey -M menuselect '^j' vi-down-line-or-history
-
-# zsh autosuggestions completion
-bindkey '^ ' autosuggest-accept
-
-# edit command in editor
-autoload -z edit-command-line
-zle -N edit-command-line
-bindkey "^X^E" edit-command-line
-
-# case insensitive autocompletion
-zstyle ":completion:*" matcher-list "" "m:{a-z}={A-Z}" "m:{a-zA-Z}={A-Za-z}" "r:|[._-]=* r:|=* l:|=*"
-# ignore hosts file for ssh/scp autocompletion
-zstyle ':completion:*' hosts off
-## Speed up completions
-zstyle ':completion:*' accept-exact '*(N)'
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
-
-# to activate the menu, press tab twice
-zstyle ':completion:*' menu select
-
-# formatting and messages
-zstyle ':completion:*' verbose yes
-zstyle ':completion:*' group-name ''
-# do not autoselect the first completion entry
-unsetopt menu_complete
-# allow gloobing, e.g apt update kernel*
-unsetopt nomatch
-# autocompletion CLI switches for aliases
-setopt complete_aliases
-# show colors on menu completion
-zstyle ':completion:*' list-colors
-# `/` as word delimiter as well
-autoload -U select-word-style
-select-word-style bash
-
-# Don't consider certain characters part of the word
-WORDCHARS=${WORDCHARS//\/[&.;]}
-
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-# https://github.com/zsh-users/zsh-autosuggestions/issues/619
-ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-beginning-search-backward-end history-beginning-search-forward-end)
-
-
-
 # --- Eza --- #
 alias ls='eza -x --icons=always --git --group-directories-first'
 alias lst='eza -x --icons --git --group-directories-first -T'
@@ -332,7 +270,6 @@ eval "$(direnv hook zsh)"
 #   exec tmux attach-session -t misc
 # fi
 
-# zsh-autosuggestions
 
 # --- homebrew --- #
 if [ "$SYSTEM" == "Darwin" ]; then

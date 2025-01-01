@@ -19,7 +19,7 @@ keyset({ "v", "n" }, "D", '"_D')
 
 keyset("n", "<TAB>", ":bn<CR>")
 keyset("n", "<S-TAB>", ":bp<CR>")
-keyset("n", "<leader>bd", ":bd<CR>") -- from Doom Emacs
+-- keyset("n", "<leader>bd", ":bd<CR>") -- from Doom Emacs
 
 -- https://www.reddit.com/r/neovim/comments/rztkaq/how_do_you_jump_out_pairs_or_quotes_in_insert/
 function EscapePair()

@@ -72,6 +72,9 @@
 	# Show the user email for the current repository.
 	whoami = config user.email
 
+  # ignore further changes to a file
+  ignore = "!f() { git update-index --assume-unchanged $1 }; f"
+
 [apply]
 
 	# Detect whitespace errors when applying a patch.
@@ -159,9 +162,13 @@
 [push]
 
 	# https://git-scm.com/docs/git-config#git-config-pushdefault
-	default = simple
+	default = current
+
 	# Make `git push` push relevant annotated tags when pushing branches out.
 	followTags = true
+
+  # Make `git push` automatically reference remote branch with the same name
+  autoSetupRemote = true
 
 # URL shorthands
 

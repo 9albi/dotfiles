@@ -9,6 +9,7 @@ tap 'homebrew/services'
 cask 'font-caskaydia-mono-nerd-font'
 
 cask 'kitty'
+cask 'ghostty'
 brew 'terminal-notifier' # Trigger Mac notifications from terminal
 
 cask 'raycast'        # Spotlight alternative

@@ -1,0 +1,4 @@
+theme = "GruvboxDarkHard"
+font-family = "CaskaydiaMono Nerd Font Mono"
+macos-titlebar-style = hidden
+macos-option-as-alt = true

@@ -270,6 +270,8 @@ eval "$(direnv hook zsh)"
 #   exec tmux attach-session -t misc
 # fi
 
+# --- mise --- #
+eval "$(mise activate zsh)"
 
 # --- homebrew --- #
 if [ "$SYSTEM" == "Darwin" ]; then
@@ -281,3 +283,4 @@ fi
 
 export PATH="$HOME/.local/bin/:$HOME/scripts/:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+

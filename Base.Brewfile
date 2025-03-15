@@ -53,6 +53,7 @@ brew 'bpytop'       # Resource monitoring (like htop)
 # brew 'newsboat'     # RSS / ATOM reader
 brew 'rclone'       # Manage cloud storage
 brew 'task'         # Todo + task management
+brew 'mise'         # Polyglot runtime manager
 brew 'navi'         # Browse, search, read cheat sheets
 
 # CLI Development Suits

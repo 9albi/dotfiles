@@ -12,8 +12,8 @@ ${custom.giturl}\
 $git_branch\
 $git_status\
 [](fg:color_aqua bg:color_blue)\
-$kubernetes\
 $azure\
+$kubernetes\
 $docker\
 $golang\
 $python\
@@ -36,12 +36,19 @@ continuation_prompt =  '▶▶ '
 
 palette = 'gruvbox_dark'
 
-# [direnv]
-# disabled = false
-# symbol = ""
-# format = "[$allowed]($style)"
-# allowed_msg = ' 󱥾 '
-# style = "bg:color_bg3"
+[direnv]
+disabled = true
+symbol = ""
+format = "[$allowed]($style)"
+allowed_msg = ' 󱥾 '
+style = "bg:color_bg3"
+
+[kubernetes]
+disabled = false
+symbol = " 󱃾 "
+format = "[$symbol$context(($namespace))]($style)"
+detect_folders = [ "kubernetes" ]
+style = 'fg:color_fg0 bg:color_blue'
 
 [azure]
 disabled = false

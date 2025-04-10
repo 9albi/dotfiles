@@ -4,3 +4,4 @@
 
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.g.root_spec = { "cwd" }
+-- vim.lsp.set_log_level("off")

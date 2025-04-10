@@ -176,16 +176,14 @@ fi
 alias ls='eza -x --icons=always --git --group-directories-first'
 alias lst='eza -x --icons --git --group-directories-first -T'
 alias l='ls'
-alias la='eza -a -x --icons --git --group-directories-first --no-user'
-alias ll='eza -l -x --icons --git --group-directories-first --no-user'
-alias lla='eza -l -a -x --icons --git --group-directories-first --no-user'
+alias la='eza -a -x --icons --git --group-directories-first'
+alias ll='eza -l -x --icons --git --group-directories-first'
+alias lla='eza -l -a -x --icons --git --group-directories-first'
 
 
 # --- zoxide --- #
 eval "$(zoxide init zsh)"
 alias cd='z'
-alias ..= "cd .."
-alias -- -="cd -"
 
 # if only directory path is entered, cd there.
 setopt autocd
@@ -201,11 +199,10 @@ fi
 
 
 # --- kubernetes --- #
-eval "$(kubectl completion zsh)"
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 alias k="kubectl"
-PATH="$HOME/.rd/bin:$PATH"
-
-
+alias kx='f() { [ "$1" ] && kubectl config use-context $1 || kubectl config current-context ; } ; f'
+alias kn='f() { [ "$1" ] && kubectl config set-context --current --namespace $1 || kubectl config view --minify | grep namespace | cut -d" " -f6 ; } ; f'
 
 # --- fzf --- #
 PATH="$HOME/.fzf/bin:$PATH"
@@ -260,7 +257,6 @@ eval "$(starship init zsh)"
 eval "$(starship completions zsh)"
 
 
-
 # --- direnv --- #
 eval "$(direnv hook zsh)"
 
@@ -273,8 +269,13 @@ eval "$(direnv hook zsh)"
 # --- mise --- #
 eval "$(mise activate zsh)"
 
+
 # --- homebrew --- #
 if [ "$SYSTEM" == "Darwin" ]; then
+  unalias brew 2>/dev/null
+  brewser=$(stat -f "%Su" $(which brew))
+  alias brew='sudo -Hu '$brewser' brew'
+
   HOMEBREW_PREFIX="/usr/local"
   source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 else

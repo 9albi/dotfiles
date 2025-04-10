@@ -196,11 +196,12 @@
 
 	defaultBranch = main
 
-[includeIf "gitdir:~/personal/"]
+[includeIf "gitdir:~/Repos/github.com/**"]
+  path = ~/Repos/github.com/personal.gitconfig
 
-  path = ~/personal/.gitconfig
+[includeIf "gitdir:!~/Repos/github.com/**"]
+  path = ~/Repos/dev.azure.com/work.gitconfig
 
-[includeIf "gitdir:~/work/"]
-
-  path = ~/work/.gitconfig
+[diff "sopsdiffer"]
+	textconv = sops -d --config /dev/null
 
